@@ -17,6 +17,7 @@ namespace SearchHelper
         private bool frmFocused;
         private bool frmMouseHover;
         private Point lastLocation;
+        NotifyIcon Myicon = new NotifyIcon();
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -32,8 +33,16 @@ namespace SearchHelper
             {
                 c.MouseHover += new EventHandler(frmMain_MouseHover);
             }
-        }
+            Myicon.Icon = Icon;
+            Myicon.DoubleClick += MyIcon_DoubleClick;
+            Myicon.Visible = true;
 
+        }
+        private void MyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            Activate();
+            Opacity = 1;
+        }
         private void FormOpacity()
         {
             double op = 0;
@@ -200,7 +209,7 @@ namespace SearchHelper
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Close();
         }
 
         private void frmMain_MouseClick(object sender, MouseEventArgs e)
@@ -212,6 +221,10 @@ namespace SearchHelper
         {
             SearchEngines.OpenURL(SearchEngines.BuildURL(TxtSearch.Text, "inkit"));
         }
-        
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Myicon.Dispose();
+        }
     }
 }

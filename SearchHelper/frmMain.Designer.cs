@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.TxtLog = new System.Windows.Forms.TextBox();
             this.BtnGoogle = new System.Windows.Forms.Button();
@@ -271,6 +272,7 @@
             this.Controls.Add(this.TxtLog);
             this.Controls.Add(this.TxtSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
@@ -279,6 +281,7 @@
             this.Text = "Search Helper";
             this.Activated += new System.EventHandler(this.frmMain_GotFocus);
             this.Deactivate += new System.EventHandler(this.frmMain_LostFocus);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.GotFocus += new System.EventHandler(this.frmMain_GotFocus);
